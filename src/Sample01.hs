@@ -28,7 +28,6 @@ signum' n   | n >  0 = 1
 
 fst'::(a, b) -> a
 fst' (a, _) = a
-lambda = \x -> x + x
 prime::Integer -> Bool
 prime n     | n == 1 = True
             | n >  1 = all (\x -> mod n x /= 0) [2 .. n - 1]

@@ -44,3 +44,13 @@ zip' :: [a] -> [b] -> [(a, b)]
 zip' [] _ = []
 zip' _ [] = []
 zip' (x:xs) (y:ys) = (x, y) : (zip' xs ys)
+
+sum = sum' 0 where
+    sum' v [] = v
+    sum' v (x:xs) = sum' (v + x) xs
+fl::(a -> b -> b) -> b -> [a] -> b
+fl f v [] = v
+fl f v (x:xs) = x `f` (fl f v xs)
+fr::(a -> b -> b) -> b -> [a] -> b
+fr f v [] = v
+fr f v (x:xs) = fr f (x `f` v) xs

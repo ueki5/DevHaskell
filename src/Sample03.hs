@@ -15,6 +15,18 @@ instance Applicative' Maybe' where
     pure' a = Just' a
     ap' (Just' f) (Just' a) = Just' (f a)
     ap' _ _ = Nothing'
+instance Monad' Maybe' where
+    bind' Nothing' f = Nothing'
+    bind' (Just' a) f = f a
 plus::(Num a) => a -> a -> a
 plus  x y = x + y
 --b= plus <$> Just' 1 <*> Just' 2
+half x = if even x
+    then Just' (x `div` 2)
+    else Nothing'
+foo = do
+    filename <- getLine
+    contents <- readFile filename
+    putStrLn contents
+    
+    

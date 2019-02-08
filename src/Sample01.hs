@@ -10,18 +10,20 @@ remve' (Just' a) = a
 fmap'::(a -> b) -> Maybe' a -> Maybe' b
 fmap' f a = apply' (f (remve' a))
 
-hoge = fmap' (+3) (Just' 5)
+-- hoge = fmap' (+3) (Just' 5)
 --fmap' :: (a -> b) -> Maybe' a -> Maybe' b
 --fmap' f a = Maybe' f a
-odd' n = map (\x -> x*2 + 1) [0 .. n - 1]
-odd'' n = [x*2 + 1|x <- [0 .. n]]
+--odd' n = map (\x -> x*2 + 1) [0 .. n - 1]
+--odd'' n = [x*2 + 1|x <- [0 .. n]]
 
 fib n   | n == 1 = 1
         | n == 2 = 1 
         | otherwise = fib (n - 1) + fib (n - 2)
+
 abs n   | n > 0 = n
         | n == 0 = 0
         | otherwise = -n
+
 signum' n   | n >  0 = 1
             | n == 0 = 0
             | n < 0 = -1
@@ -54,9 +56,7 @@ fl f v (x:xs) = x `f` (fl f v xs)
 fr::(a -> b -> b) -> b -> [a] -> b
 fr f v [] = v
 fr f v (x:xs) = fr f (x `f` v) xs
-odd' n = not (even n)
-odd'' = not . even
-twice' f x = f (f x)
-twice'' f = f . f
+odd' = not . even
+twice' f = f . f
 sumsqreven' ns = sum (map (^2) (filter even ns))
 sumsqreven'' = sum . map (^2) . filter even

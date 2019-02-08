@@ -28,7 +28,6 @@ signum' n   | n >  0 = 1
 
 fst'::(a, b) -> a
 fst' (a, _) = a
-lambda = \x -> x + x
 prime::Integer -> Bool
 prime n     | n == 1 = True
             | n >  1 = all (\x -> mod n x /= 0) [2 .. n - 1]
@@ -45,9 +44,9 @@ zip' [] _ = []
 zip' _ [] = []
 zip' (x:xs) (y:ys) = (x, y) : (zip' xs ys)
 
-sum = sum' 0 where
-    sum' v [] = v
-    sum' v (x:xs) = sum' (v + x) xs
+sum' = sum'' 0 where
+    sum'' v [] = v
+    sum'' v (x:xs) = sum'' (v + x) xs
 
 fl::(a -> b -> b) -> b -> [a] -> b
 fl f v [] = v
@@ -55,3 +54,9 @@ fl f v (x:xs) = x `f` (fl f v xs)
 fr::(a -> b -> b) -> b -> [a] -> b
 fr f v [] = v
 fr f v (x:xs) = fr f (x `f` v) xs
+odd' n = not (even n)
+odd'' = not . even
+twice' f x = f (f x)
+twice'' f = f . f
+sumsqreven' ns = sum (map (^2) (filter even ns))
+sumsqreven'' = sum . map (^2) . filter even

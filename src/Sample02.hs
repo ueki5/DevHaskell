@@ -9,3 +9,6 @@ int2bin::Int -> [Bit]
 int2bin = reverse . int2bin' where
     int2bin' 0 = []
     int2bin' n = mod n 2 : int2bin' (n `div` 2)
+dsp::[Bit] -> String
+dsp = (foldr (++) []) . (map show)
+data plus = [0,1] 

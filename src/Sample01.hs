@@ -1,20 +1,20 @@
 module Sample01 where
-data MaybeU a = NothingU | JustU a deriving (Eq, Ord, Show, Read)
+data Maybe' a = Nothing' | Just' a deriving (Eq, Ord, Show, Read)
 
-applyU :: a -> MaybeU a
-applyU = JustU
+apply' :: a -> Maybe' a
+apply' = Just'
 
-remveU::MaybeU a -> a
-remveU (JustU a) = a
+remve'::Maybe' a -> a
+remve' (Just' a) = a
 
-fmapU::(a -> b) -> MaybeU a -> MaybeU b
-fmapU f a = applyU (f (remveU a))
+fmap'::(a -> b) -> Maybe' a -> Maybe' b
+fmap' f a = apply' (f (remve' a))
 
-hoge = fmapU (+3) (JustU 5)
---fmapU :: (a -> b) -> MaybeU a -> MaybeU b
---fmapU f a = MaybeU f a
-oddU n = map (\x -> x*2 + 1) [0 .. n - 1]
-oddU' n = [x*2 + 1|x <- [0 .. n]]
+hoge = fmap' (+3) (Just' 5)
+--fmap' :: (a -> b) -> Maybe' a -> Maybe' b
+--fmap' f a = Maybe' f a
+odd' n = map (\x -> x*2 + 1) [0 .. n - 1]
+odd'' n = [x*2 + 1|x <- [0 .. n]]
 
 fib n   | n == 1 = 1
         | n == 2 = 1 

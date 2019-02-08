@@ -13,6 +13,8 @@ instance Functor' Maybe' where
     fmap' f Nothing' = Nothing'
 instance Applicative' Maybe' where
     pure' a = Just' a
-    ap' Nothing' _ = Nothing'
-    ap' _ Nothing' = Nothing'
     ap' (Just' f) (Just' a) = Just' (f a)
+    ap' _ _ = Nothing'
+plus::(Num a) => a -> a -> a
+plus  x y = x + y
+--b= plus <$> Just' 1 <*> Just' 2
